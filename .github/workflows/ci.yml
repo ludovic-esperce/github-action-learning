@@ -19,4 +19,7 @@ jobs:
       
       - name: Liste des fichiers du dépôt
         run : ls ${{ github.workspace }}
+      
+      - name: Status du job
+        run: echo "Le status du job est ${{ job.status }}"
 
