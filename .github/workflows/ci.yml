@@ -5,7 +5,9 @@ jobs:
   Github-action-learning:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "It's alive! ALIIIIIVE!"
+      - name: Step nommée
+        run: echo "It's alive! ALIIIIIVE!"
+
       - run: echo "Le job a été déclenché par ${{ github.event_name }}"
-      - run: echo "Ce job tourne sur ${{ runner.os }}"
+      - run: echo "Ce job tourne sur ${{ runner.os }} ${{ runner.os }} ${{ runner.os }} "
       - run: echo "La branche est ${{ github.ref }} sur le dépôt ${{ github.repository }}"
