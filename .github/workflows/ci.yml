@@ -1,19 +1,31 @@
-name : Github Action leanring
+name : Github Action learning
+
+# Permissions minimales pour le workflow
+permissions:
+  contents: read
+
 run-name : ${{ github.actor }} apprentissage de Github Action
 on : [push]
+
 jobs:
   Github-action-learning:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - name: Etape 1
+      - name: Etape 1 - Là où tout commence
         run: echo "It's alive! ALIIIIIVE!"
 
-      - run: echo "Le job a été déclenché par ${{ github.event_name }}"
-      - run: echo "Ce job tourne sur ${{ runner.os }} ${{ runner.os }} ${{ runner.os }} "
-      - run: echo "La branche est ${{ github.ref }} sur le dépôt ${{ github.repository }}"
+      # Il est possible d'utiliser des variables d'environnement en utilisant ${{ <nom-variable> }}
+      # https://docs.github.com/en/actions/reference/workflows-and-actions/contexts
+      - name: Informations diverses
+        run: | # Le | permet de chaîner les commandes
+          echo "Le job a été déclenché par ${{ github.event_name }}"
+          echo "Ce job tourne sur ${{ runner.os }} ${{ runner.os }} ${{ runner.os }} "
+          echo "La branche est ${{ github.ref }} sur le dépôt ${{ github.repository }}"
 
       - name: Récupération du code
-        uses : actions/checkout@v5
+        # Recommandation sécurité : utiliser le SHA du commit stable de l'action Github
+        # Dépôt du code de l'action : https://github.com/actions/checkout/releases/tag/v6.0.2
+        uses : actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - run: echo "Le dépôt ${{ github.repository }} a été cloné dans le runner."
       
@@ -22,4 +34,3 @@ jobs:
       
       - name: Status du job
         run: echo "Le status du job est ${{ job.status }}"
-
