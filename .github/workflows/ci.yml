@@ -19,7 +19,7 @@ jobs:
       - name: Informations diverses
         run: | # Le | permet de chaîner les commandes
           echo "Le job a été déclenché par ${{ github.event_name }}"
-          echo "Ce job tourne sur ${{ runner.os }} ${{ runner.os }} ${{ runner.os }} "
+          echo "Ce job tourne sur ${{ runner.os }}"
           echo "La branche est ${{ github.ref }} sur le dépôt ${{ github.repository }}"
 
       - name: Récupération du code
